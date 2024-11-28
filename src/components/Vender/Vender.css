@@ -1,0 +1,122 @@
+.mainDivVender {
+    display: flex;
+}
+
+.barcode-table {
+    width: 65%;
+}
+
+.barcodeInputContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.buttonSearch {
+    padding: .3rem;
+}
+
+.inputBarcode {
+    margin: 0 1rem;
+    flex: 1;
+}
+
+.tableContainer {
+    margin-top: 4rem;
+    background-color: #ADB5BD;
+    height: 45rem;
+    max-height: 45rem;
+    overflow-y: auto;
+    padding: 0 .5rem;
+}
+
+.tableProducts {
+    width: 100%;
+    border: 1px solid grey;
+    border-collapse: collapse;
+
+    p {
+        margin: .2rem 0;
+    }
+
+    td,
+    th {
+        padding: .5rem;
+        border: 1px solid grey;
+        background-color: #f2f2f2
+    }
+
+    thead {
+        background-color: #f2f2f2;
+    }
+}
+
+.totalpriceContainer {
+    width: 35%;
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.totalPrice {
+    width: 100%;
+    margin-bottom: 5rem;
+
+    .priceContainer {
+        background-color: greenyellow;
+        padding: 2rem;
+        margin: 1rem 0;
+
+        h2 {
+            font-size: 2rem;
+        }
+    }
+}
+
+.formInputAddPrice {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+
+    span {
+        font-weight: bold;
+        margin-right: .5rem;
+    }
+
+    button {
+        width: 40%;
+        margin-top: 1rem;
+    }
+}
+
+.inputAddPriceContainer {
+    display: flex;
+}
+
+.buttonFinishBuy {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.buttonAdd {
+    padding: .5rem;
+}
+
+.inputAddPrice {
+    padding: .2rem 0;
+}
+
+.deleteProductChar {
+    cursor: pointer;
+    text-align: center;
+}
+
+.divWithShadow {
+    width: 100%;
+    box-shadow: 0px -10px 7px -5px rgba(0, 0, 0, 0.75);
+    height: 20px;
+    background-color: #E9ECEF;
+}

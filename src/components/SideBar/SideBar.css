@@ -1,0 +1,39 @@
+.sidebar {
+    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.app-name {
+    font-size: 1.5rem;
+    margin: 2rem;
+}
+
+.sidebar nav {
+    width: 100%;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    padding: 1.5rem;
+}
+
+.sidebar nav ul li:hover {
+    background-color: #ADB5BD;
+    transition: .2s ease-in-out;
+}
+
+.link {
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.aplicarFondo {
+    background-color: #ADB5BD;
+}

@@ -1,0 +1,32 @@
+.titleMain {
+    margin-bottom: 2rem;
+}
+
+.divHistorySalesContainer {
+    width: 100%;
+}
+
+.divSaleContainer {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    h2 {
+        font-weight: 400;
+        margin-bottom: .5rem;
+    }
+
+    ul {
+        margin-left: 1rem;
+
+        li {
+            margin-bottom: .5rem;
+        }
+    }
+
+    span {
+        margin-left: .2rem;
+        font-weight: bold;
+    }
+}
