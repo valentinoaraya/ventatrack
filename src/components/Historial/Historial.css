@@ -30,3 +30,19 @@
         font-weight: bold;
     }
 }
+
+.buttonFilter {
+    margin-right: 1rem;
+    padding: .5rem;
+}
+
+.divButtonPages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonPage {
+    padding: .3rem;
+    margin: 0 .5rem;
+}

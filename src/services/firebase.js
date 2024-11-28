@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app"
-import {addDoc, collection, getDocs, getFirestore, query, where} from "firebase/firestore"
+import {addDoc, collection, getDocs, getFirestore, limit, orderBy, query, startAfter, where} from "firebase/firestore"
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -59,7 +59,7 @@ export const getSales = async () =>{
     try{
         const querySnapshot = await getDocs(collection(db, "ventas"))
         const documents = querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}))        
-        
+
         // Agrupar por fecha
         const groupedSales = documents.reduce((acc, sale)=>{
             const {fecha} = sale
@@ -75,7 +75,7 @@ export const getSales = async () =>{
                 acc[fecha] = groupedSales[fecha]
                 return acc
             }, {})
-
+            
         return orderedGroupedSales
 
     } catch(error){
