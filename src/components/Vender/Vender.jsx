@@ -213,7 +213,7 @@ const Vender = () => {
                 disabledButton={disabledButton}
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
-                code={newProductCode}
+                dataProduct={{ codigoDeBarras: newProductCode }}
                 onSubmit={(productData) => handleAddProduct(productData)}
             />
         </div>

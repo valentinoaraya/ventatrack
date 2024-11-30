@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./ModalNuevoProducto.css"
 
-const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, code, disabledButton }) => {
+const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, dataProduct, disabledButton, update }) => {
 
     const [productData, setProductData] = useState({
         nombre: "",
@@ -10,13 +10,15 @@ const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, code, disabledButton })
     })
 
     useEffect(() => {
-        if (code) {
+        if (dataProduct) {
             setProductData((prevData) => ({
                 ...prevData,
-                codigoDeBarras: code,
+                nombre: dataProduct.nombre || "",
+                precio: dataProduct.precio || "",
+                codigoDeBarras: dataProduct.codigoDeBarras,
             }));
         }
-    }, [code]);
+    }, [dataProduct]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -50,7 +52,7 @@ const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, code, disabledButton })
     return (
         <div className='modal-overlay'>
             <div className='modal-content'>
-                <h2>Agregar nuevo producto</h2>
+                <h2>{update ? "Actualizar" : "Agregar nuevo"} producto</h2>
                 <form onSubmit={handleFormSubmit} className='formAddProduct'>
                     <div className='divLabelInput'>
                         <label>Nombre del producto: </label>
@@ -77,7 +79,6 @@ const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, code, disabledButton })
                             value={productData.codigoDeBarras}
                             onChange={handleChange}
                             required
-                            readOnly
                         />
                     </div>
                     <button
@@ -85,7 +86,7 @@ const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, code, disabledButton })
                         type='submit'
                         disabled={disabledButton}
                     >
-                        Agregar producto
+                        {update ? "Actualizar" : "Agregar"} producto
                     </button>
                     <button
                         className='buttonModalForm'

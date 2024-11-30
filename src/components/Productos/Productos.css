@@ -1,0 +1,36 @@
+.tableProducts2 {
+
+    width: 100%;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    margin: 2rem 0;
+
+    td,
+    th {
+        padding: .5rem;
+        border: 1px solid grey;
+    }
+
+    thead {
+        background-color: #adb5bd;
+    }
+}
+
+.tdTable {
+    text-align: center;
+}
+
+.divInput {
+    display: flex;
+    margin-top: 1rem;
+    align-items: center;
+
+    p {
+        margin-right: .5rem;
+    }
+
+    input {
+        padding: .3rem;
+        width: 30%;
+    }
+}

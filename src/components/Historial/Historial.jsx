@@ -27,7 +27,7 @@ const Historial = () => {
                     arrayDates = Object.keys(response).filter(fecha => new Date(fecha) >= lastWeek)
                 } else if (filterOption === "month") {
                     const lastMonth = new Date()
-                    lastMonth.setDate(today.getMonth() - 1)
+                    lastMonth.setDate(today.getDate() - 31)
                     arrayDates = Object.keys(response).filter(fecha => new Date(fecha) >= lastMonth)
                 } else {
                     arrayDates = Object.keys(response)

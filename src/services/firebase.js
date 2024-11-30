@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app"
-import {addDoc, collection, getDocs, getFirestore, limit, orderBy, query, startAfter, where} from "firebase/firestore"
+import {addDoc, collection, doc, getDocs, getFirestore, query, updateDoc, where, getDoc} from "firebase/firestore"
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -46,7 +46,6 @@ export const addProductToDatabase = async (productData) => {
 export const addSaleToDB = async (saleData) => {
     try{
         const collectionRef = collection(db, "ventas")
-        console.log(saleData)
         await addDoc(collectionRef, saleData)
         return `Venta realizada correctamente.`
     } catch(error){
@@ -78,6 +77,34 @@ export const getSales = async () =>{
             
         return orderedGroupedSales
 
+    } catch(error){
+        console.error(error)
+        return null
+    }
+}
+
+export const getAllProducts = async () => {
+    try{
+        const querySnapshot = await getDocs(collection(db, "productos"))
+        const documents = querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}))
+        return documents
+    } catch(error){
+        console.error(error)
+        return null
+    }
+}
+
+export const updateProduct = async (idProduct, newDataProduct) => {
+    try{
+        const productRef = doc(db, "productos", idProduct)
+        await updateDoc(productRef, newDataProduct)
+        const updatedProduct = await getDoc(productRef)
+        if (updatedProduct.exists()){
+            return {
+                id: updatedProduct.id,
+                ...updatedProduct.data()
+            }
+        }
     } catch(error){
         console.error(error)
         return null
