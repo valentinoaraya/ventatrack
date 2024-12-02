@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Productos.css"
-import { getAllProducts, updateProduct } from '../../services/firebase.js';
+import { deleteProduct, getAllProducts, updateProduct } from '../../services/firebase.js';
 import ModalNuevoProducto from '../ModalNuevoProducto/ModalNuevoProducto.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -93,7 +93,20 @@ const Productos = () => {
         } else {
             notifyError("Error al actualizar producto.")
         }
+    }
 
+    const handleDeleteProduct = async () => {
+        setDisabledButton(true)
+        const response = await deleteProduct(dataProduct.id)
+        setDisabledButton(false)
+        setIsModalOpen(false)
+        if (response) {
+            setProducts(prevProducts => prevProducts.filter(prod => prod.id != dataProduct.id))
+            setFilteredProducts(prevProducts => prevProducts.filter(prod => prod.id != dataProduct.id))
+            notifySucces("Producto eliminado.")
+        } else {
+            notifyError("Error al eliminar producto.")
+        }
     }
 
     return (
@@ -169,6 +182,7 @@ const Productos = () => {
                 dataProduct={dataProduct}
                 disabledButton={disabledButton}
                 onSubmit={(productData) => handleUpdateProduct(productData)}
+                onDelete={handleDeleteProduct}
             />
         </div>
     );

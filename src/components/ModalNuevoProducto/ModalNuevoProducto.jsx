@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./ModalNuevoProducto.css"
 
-const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, dataProduct, disabledButton, update }) => {
+const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, dataProduct, disabledButton, update, onDelete }) => {
 
     const [productData, setProductData] = useState({
         nombre: "",
@@ -31,6 +31,16 @@ const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, dataProduct, disabledBu
     const handleFormSubmit = (e) => {
         e.preventDefault()
         onSubmit(productData)
+        setProductData({
+            nombre: "",
+            precio: "",
+            codigoDeBarras: ""
+        })
+    }
+
+    const handleDelepteProduct = (e) => {
+        e.preventDefault()
+        onDelete()
         setProductData({
             nombre: "",
             precio: "",
@@ -88,6 +98,17 @@ const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, dataProduct, disabledBu
                     >
                         {update ? "Actualizar" : "Agregar"} producto
                     </button>
+                    {
+                        onDelete &&
+                        <button
+                            className='buttonModalForm'
+                            type='button'
+                            onClick={handleDelepteProduct}
+                            disabled={disabledButton}
+                        >
+                            Eliminar producto
+                        </button>
+                    }
                     <button
                         className='buttonModalForm'
                         type='button'

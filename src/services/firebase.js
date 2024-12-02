@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app"
-import {addDoc, collection, doc, getDocs, getFirestore, query, updateDoc, where, getDoc} from "firebase/firestore"
+import {addDoc, collection, doc, getDocs, getFirestore, query, updateDoc, where, getDoc, deleteDoc} from "firebase/firestore"
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -103,6 +103,23 @@ export const updateProduct = async (idProduct, newDataProduct) => {
             return {
                 id: updatedProduct.id,
                 ...updatedProduct.data()
+            }
+        }
+    } catch(error){
+        console.error(error)
+        return null
+    }
+}
+
+export const deleteProduct = async (idProduct) => {
+    try{
+        const productRef = doc(db, "productos", idProduct)
+        const deletedProduct = await getDoc(productRef)
+        await deleteDoc(productRef)
+        if (deletedProduct.exists()){
+            return {
+                id: deletedProduct.id,
+                ...deletedProduct.data()
             }
         }
     } catch(error){
