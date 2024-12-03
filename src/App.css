@@ -7,3 +7,36 @@
   padding: 2rem;
   width: 100%;
 }
+
+.divLoginContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divLogin {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.formLogin {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+
+  button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: .5rem;
+  }
+}
+
+.divInputContainer {
+  margin: 1rem 0;
+}

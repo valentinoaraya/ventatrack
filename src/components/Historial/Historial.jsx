@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Historial.css"
-import { getSales } from '../../services/firebase.js';
+import { getSales } from '../../services/firebase-db.js';
 
 const Historial = () => {
 

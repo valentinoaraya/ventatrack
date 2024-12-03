@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Productos.css"
-import { deleteProduct, getAllProducts, updateProduct } from '../../services/firebase.js';
+import { deleteProduct, getAllProducts, updateProduct } from '../../services/firebase-db.js';
 import ModalNuevoProducto from '../ModalNuevoProducto/ModalNuevoProducto.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 
