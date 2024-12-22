@@ -40,3 +40,8 @@
 .divInputContainer {
   margin: 1rem 0;
 }
+
+.divAdvertencia {
+  padding: 1rem;
+  background-color: #f8d7da;
+}
