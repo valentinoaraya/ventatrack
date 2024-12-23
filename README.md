@@ -36,7 +36,15 @@ Una aplicación web desarrollada para la gestión de ventas de pequeños negocio
 
 ## 🚀 Despliegue
 
-Una versión de prueba de la aplicación está desplegada en Vercel para que puedas ver su funcionamiento. Puedes acceder a la versión de prueba en enlace-a-la-aplicacion.
+Una versión de prueba de la aplicación está desplegada en Vercel para que puedas ver su funcionamiento. Puedes acceder a la versión de prueba en [este link](https://ventatrack-trial-version.vercel.app/).
+
+## 🌐 Versión de prueba
+
+La versión de prueba está diseñada para que cualquier usuario pueda visualizar el comportamiento de la aplicación. En esta versión solo verás algunos productos y ventas guardados en la base de datos, por cuestiones de seguridad no podrás realizar operaciones de escritura en la base de datos (saltarán errores a la hora de realizar una venta y modificar o agregar un producto).
+
+### Datos de acceso
+- Usuario: testuser@example.com
+- Contraseña: testuser
 
 ## 📜 Autor
 
