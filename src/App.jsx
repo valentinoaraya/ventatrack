@@ -59,7 +59,7 @@ function App() {
         <p>
           Esta es una versión de prueba de la aplicación.
           Esta version utiliza una base de datos con algunos productos y ventas solo para demostración.
-          No podrás realizar operaciones de escritura en la base de datos, solo la lectura de los datos ya guardados.
+          No podrás realizar operaciones de escritura en la base de datos.
         </p>
       </div>
       <div className='app'>
