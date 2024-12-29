@@ -6,7 +6,8 @@ import Productos from './components/Productos/Productos.jsx'
 import Historial from './components/Historial/Historial.jsx'
 import { useEffect, useState } from 'react'
 import { authListener, login, logout } from './services/firebase-auth.js'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
+import { notifyError } from './utils/notifications.js'
 
 function App() {
 
@@ -39,13 +40,6 @@ function App() {
       [e.target.name]: e.target.value
     })
   }
-
-  const notifyError = (text) => toast.error(text, {
-    position: "top-right",
-    autoClose: 2000,
-    pauseOnHover: false,
-    theme: "colored"
-  })
 
   if (loading) return <div className='app'>
     <div className='divLoginContainer'>

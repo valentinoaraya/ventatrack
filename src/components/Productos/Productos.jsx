@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import "./Productos.css"
 import { deleteProduct, getAllProducts, updateProduct } from '../../services/firebase-db.js';
 import ModalNuevoProducto from '../ModalNuevoProducto/ModalNuevoProducto.jsx';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import { notifySucces, notifyError } from '../../utils/notifications.js';
 
 const Productos = () => {
 
@@ -58,20 +59,6 @@ const Productos = () => {
         setDataProduct(dataProduct)
         setIsModalOpen(true)
     }
-
-    const notifySucces = (text) => toast.success(text, {
-        position: "top-right",
-        autoClose: 2000,
-        pauseOnHover: false,
-        theme: "colored"
-    })
-
-    const notifyError = (text) => toast.error(text, {
-        position: "top-right",
-        autoClose: 2000,
-        pauseOnHover: false,
-        theme: "colored"
-    })
 
     const handleUpdateProduct = async (newDataProduct) => {
         setDisabledButton(true)
@@ -178,7 +165,10 @@ const Productos = () => {
             <ModalNuevoProducto
                 isOpen={isModalOpen}
                 update={true}
-                onClose={() => { setIsModalOpen(false) }}
+                onClose={() => {
+                    setIsModalOpen(false)
+                    setDataProduct(null)
+                }}
                 dataProduct={dataProduct}
                 disabledButton={disabledButton}
                 onSubmit={(productData) => handleUpdateProduct(productData)}

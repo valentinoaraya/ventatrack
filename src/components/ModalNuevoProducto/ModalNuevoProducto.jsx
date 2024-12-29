@@ -5,8 +5,8 @@ const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, dataProduct, disabledBu
 
     const [productData, setProductData] = useState({
         nombre: "",
-        precio: "",
-        codigoDeBarras: ""
+        precio: null,
+        codigoDeBarras: null
     })
 
     useEffect(() => {
@@ -14,18 +14,25 @@ const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, dataProduct, disabledBu
             setProductData((prevData) => ({
                 ...prevData,
                 nombre: dataProduct.nombre || "",
-                precio: dataProduct.precio || "",
-                codigoDeBarras: dataProduct.codigoDeBarras,
+                precio: dataProduct.precio || null,
+                codigoDeBarras: parseInt(dataProduct.codigoDeBarras),
             }));
         }
     }, [dataProduct]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setProductData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
+        if (name === "precio" || name === "codigoDeBarras") {
+            setProductData((prevData) => ({
+                ...prevData,
+                [name]: parseFloat(value),
+            }));
+        } else {
+            setProductData((prevData) => ({
+                ...prevData,
+                [name]: value,
+            }));
+        }
     };
 
     const handleFormSubmit = (e) => {
@@ -38,21 +45,21 @@ const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, dataProduct, disabledBu
         })
     }
 
-    const handleDelepteProduct = (e) => {
+    const handleDeleteProduct = (e) => {
         e.preventDefault()
         onDelete()
         setProductData({
             nombre: "",
-            precio: "",
-            codigoDeBarras: ""
+            precio: null,
+            codigoDeBarras: null
         })
     }
 
     const handleCancel = (e) => {
         setProductData({
             nombre: "",
-            precio: "",
-            codigoDeBarras: ""
+            precio: null,
+            codigoDeBarras: null
         })
         onClose()
     }
@@ -75,18 +82,18 @@ const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, dataProduct, disabledBu
                     </div>
                     <div className='divLabelInput'>
                         <label>Precio: </label>
-                        <input type="text"
+                        <input type='number'
                             name="precio"
-                            value={productData.precio}
+                            value={productData.precio || ""}
                             onChange={handleChange}
                             required
                         />
                     </div>
                     <div className='divLabelInput'>
                         <label>Código de barras: </label>
-                        <input type="text"
+                        <input type="number"
                             name="codigoDeBarras"
-                            value={productData.codigoDeBarras}
+                            value={productData.codigoDeBarras || ""}
                             onChange={handleChange}
                             required
                         />
@@ -103,7 +110,7 @@ const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, dataProduct, disabledBu
                         <button
                             className='buttonModalForm'
                             type='button'
-                            onClick={handleDelepteProduct}
+                            onClick={handleDeleteProduct}
                             disabled={disabledButton}
                         >
                             Eliminar producto
