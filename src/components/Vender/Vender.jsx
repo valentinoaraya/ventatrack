@@ -1,18 +1,19 @@
-import React, { useEffect, useId, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Vender.css"
 import { addProductToDatabase, addSaleToDB, getProductsByCode } from '../../services/firebase-db.js';
 import ModalNuevoProducto from '../ModalNuevoProducto/ModalNuevoProducto.jsx';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
+import { notifyError, notifySucces } from '../../utils/notifications.js';
 
 const Vender = () => {
 
     const [productsFound, setProductsFound] = useState([])
-    const [codeBar, setCodeBar] = useState("")
+    const [codeBar, setCodeBar] = useState(null)
     const [total, setTotal] = useState(0)
-    const [addPrice, setAddPrice] = useState("")
+    const [addPrice, setAddPrice] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [newProductCode, setNewProductCode] = useState("")
+    const [newProductCode, setNewProductCode] = useState(null)
     const [disabledButton, setDisabledButton] = useState(false)
 
     useEffect(() => {
@@ -22,22 +23,12 @@ const Vender = () => {
         setTotal(nuevoTotal)
     }, [productsFound])
 
-    const notifySucces = (text) => toast.success(text, {
-        position: "top-right",
-        autoClose: 2000,
-        pauseOnHover: false,
-        theme: "colored"
-    })
-
-    const notifyError = (text) => toast.error(text, {
-        position: "top-right",
-        autoClose: 2000,
-        pauseOnHover: false,
-        theme: "colored"
-    })
-
     const handleBuscarProducto = async (e) => {
         e.preventDefault()
+        if (!codeBar) {
+            notifyError("Ingrese un código de barras.")
+            return
+        }
         const resultado = await getProductsByCode(codeBar)
         if (resultado) {
             const existsProduct = productsFound.findIndex(producto => producto.codigoDeBarras === resultado.codigoDeBarras)
@@ -56,7 +47,7 @@ const Vender = () => {
             setIsModalOpen(true)
         }
 
-        setCodeBar("")
+        setCodeBar(null)
     }
 
     const handleDeleteProduct = (prod) => {
@@ -70,11 +61,11 @@ const Vender = () => {
         const newProduct = {
             nombre: "Producto suelto",
             codigoDeBarras: newId,
-            precio: parseInt(addPrice),
+            precio: parseFloat(addPrice),
             cantidad: 1
         }
         setProductsFound(prevProducts => [...prevProducts, newProduct])
-        setAddPrice("")
+        setAddPrice(null)
     }
 
     const handleAddProduct = async (product) => {
@@ -96,7 +87,7 @@ const Vender = () => {
 
     const handleCloseModal = () => {
         setIsModalOpen(false)
-        setNewProductCode("")
+        setNewProductCode(null)
     }
 
     const handleCompleteSale = async () => {
@@ -131,10 +122,12 @@ const Vender = () => {
                     <h1 className='title'>Código de barras:</h1>
                     <input
                         className='inputBarcode'
-                        type="text"
+                        type="number"
                         name="barcode"
-                        value={codeBar}
-                        onChange={(e) => setCodeBar(e.target.value)}
+                        value={codeBar || ""}
+                        onChange={(e) => {
+                            setCodeBar(parseFloat(e.target.value))
+                        }}
                         onKeyDown={(e) => e.key === "Enter" && handleBuscarProducto(e)}
                     />
                     <button className='buttonSearch' onClick={handleBuscarProducto} >Buscar</button>
@@ -190,9 +183,9 @@ const Vender = () => {
                                 <p><span>$</span></p>
                                 <input
                                     className='inputAddPrice'
-                                    type="text"
+                                    type="number"
                                     name='addPrice'
-                                    value={addPrice}
+                                    value={addPrice || ""}
                                     onChange={(e) => setAddPrice(e.target.value)}
                                     required
                                 />
