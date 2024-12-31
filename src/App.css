@@ -46,6 +46,17 @@
   background-color: #f8d7da;
 }
 
+@media screen and (max-width: 1200px) {
+  .divAdvertencia {
+    padding: .5rem;
+
+    p {
+      font-size: .8rem;
+    }
+  }
+
+}
+
 @media screen and (max-width: 750px) {
   .app {
     flex-direction: column;
