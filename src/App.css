@@ -1,5 +1,4 @@
 .app {
-  height: 100vh;
   display: flex;
 }
 
@@ -44,4 +43,15 @@
 .divAdvertencia {
   padding: 1rem;
   background-color: #f8d7da;
+}
+
+@media screen and (max-width: 750px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .content {
+    padding: 1rem;
+    width: auto;
+  }
 }

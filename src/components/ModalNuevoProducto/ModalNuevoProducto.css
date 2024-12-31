@@ -31,3 +31,36 @@
     padding: .5rem;
     margin-right: 1rem;
 }
+
+@media screen and (max-width: 480px) {
+    .modal-content {
+        padding: 1.5rem;
+        margin: 0 .5rem;
+
+        h2 {
+            font-size: 1.2rem;
+        }
+    }
+
+    .divLabelInput {
+        margin: 1rem 0;
+        display: flex;
+        flex-direction: column;
+
+        label {
+            font-size: .8rem;
+            margin-bottom: .3rem;
+        }
+
+        input {
+            padding: 0;
+            margin-left: 0;
+        }
+    }
+
+    .buttonModalForm {
+        padding: .3rem;
+        margin-right: .5rem;
+        margin-bottom: .5rem;
+    }
+}

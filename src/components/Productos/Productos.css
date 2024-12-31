@@ -34,3 +34,32 @@
         width: 30%;
     }
 }
+
+@media screen and (max-width: 1200px) {
+    .divProductsContainer {
+        height: 93vh;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .divInput {
+        input {
+            width: 100%;
+        }
+    }
+
+    .tableProducts2 {
+        margin: 1rem 0;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .tableProducts2 {
+
+        td,
+        th {
+            padding: .2rem;
+            font-size: .8rem;
+        }
+    }
+}
