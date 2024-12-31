@@ -46,3 +46,30 @@
     padding: .3rem;
     margin: 0 .5rem;
 }
+
+
+@media screen and (max-width: 1200px) {
+    .divHistorialContainer {
+        height: 93vh;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .divSaleContainer {
+        h2 {
+            font-size: 1.2rem;
+        }
+    }
+
+    .buttonFilter {
+        padding: .3rem;
+        margin-right: .5rem;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .buttonFilter {
+        padding: .2rem;
+        margin-right: .3rem;
+    }
+}

@@ -120,3 +120,72 @@
     height: 20px;
     background-color: #E9ECEF;
 }
+
+@media screen and (max-width: 1200px) {
+    .mainDivVender {
+        flex-direction: column;
+    }
+
+    .barcode-table {
+        width: 100%;
+    }
+
+    .totalpriceContainer {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .totalPrice {
+        margin-bottom: 0;
+
+        .priceContainer {
+            margin: .5rem 0;
+            padding: 1rem;
+
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .tableContainer {
+        margin-top: 1rem;
+        height: 30rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .buttonFinishBuy {
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    h1 {
+        font-size: 1rem;
+    }
+
+    .barcodeInputContainer {
+        align-items: center;
+    }
+
+    .inputBarcode {
+        margin: 0 .5rem;
+        width: 8rem;
+    }
+
+    .tableContainer {
+        padding: 0;
+    }
+
+    .tableProducts {
+
+        td,
+        th {
+            padding: .2rem;
+            font-size: .8rem;
+        }
+    }
+}

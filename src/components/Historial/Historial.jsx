@@ -6,7 +6,7 @@ const Historial = () => {
 
     const [objetoVentas, setObjetoVentas] = useState({})
     const [filteredDates, setFilteredDates] = useState([])
-    const [filterOption, setFilterOption] = useState("week")
+    const [filterOption, setFilterOption] = useState("all")
     const [isLoading, setIsLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const pageSize = 5
@@ -59,7 +59,7 @@ const Historial = () => {
     }
 
     return (
-        <div>
+        <div className='divHistorialContainer'>
             <h1 className='titleMain'>Historial de ventas</h1>
             {
                 isLoading ?

@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
+    height: 100vh;
 }
 
 .app-name {
@@ -36,4 +37,33 @@
 
 .aplicarFondo {
     background-color: #ADB5BD;
+}
+
+@media screen and (max-width: 1200px) {
+    .sidebar {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .sidebar {
+
+        border-right: none;
+        border-bottom: 1px solid black;
+
+        .app-name {
+            display: none;
+        }
+
+        nav ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul li {
+            padding: 1rem;
+        }
+    }
 }
