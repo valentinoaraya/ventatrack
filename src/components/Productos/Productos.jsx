@@ -97,7 +97,7 @@ const Productos = () => {
     }
 
     return (
-        <div>
+        <div className='divProductsContainer'>
             <ToastContainer />
             <h1>Productos</h1>
             {

@@ -1,5 +1,4 @@
 .app {
-  height: 100vh;
   display: flex;
 }
 
@@ -39,4 +38,15 @@
 
 .divInputContainer {
   margin: 1rem 0;
+}
+
+@media screen and (max-width: 750px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .content {
+    padding: 1rem;
+    width: auto;
+  }
 }
