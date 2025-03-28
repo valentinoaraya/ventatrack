@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
+:root {
+  --negro-oscuro: #252323;
+  --gris: #70798C;
+  --crema-claro: #F5F1ED;
+  --crema-oscuro: #DAD2BC;
+  --marron: #A99985;
+  --gris-claro: #f8f9fa;
+  --gris-intermedio: #adb5bd;
+}
+
 * {
   font-family: "Rubik";
   margin: 0;
@@ -7,7 +17,8 @@
 }
 
 body {
-  background-color: #E9ECEF;
+  background-color: white;
+  color: var(--negro-oscuro);
 }
 
 html,
