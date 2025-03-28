@@ -78,6 +78,7 @@ function App() {
                   <div className='divInputContainer'>
                     <label>Usuario: </label>
                     <input
+                      className='inputLogin'
                       type="text"
                       name='username'
                       onChange={hanldeChange}
@@ -87,13 +88,14 @@ function App() {
                   <div className='divInputContainer'>
                     <label>Contraseña: </label>
                     <input
+                      className='inputLogin'
                       type="password"
                       name='password'
                       onChange={hanldeChange}
                       required
                     />
                   </div>
-                  <button type='submit'>Iniciar sesión</button>
+                  <button className='buttonLogin' type='submit'>Iniciar sesión</button>
                 </form>
               </div>
             </div>
