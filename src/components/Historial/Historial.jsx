@@ -9,7 +9,7 @@ const Historial = () => {
     const [filterOption, setFilterOption] = useState("all")
     const [isLoading, setIsLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
-    const pageSize = 5
+    const pageSize = window.innerWidth <= 1200 ? 5 : 16
 
     useEffect(() => {
         const fetchSales = async () => {

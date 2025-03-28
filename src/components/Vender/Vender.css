@@ -1,5 +1,7 @@
 .mainDivVender {
     display: flex;
+    gap: 2rem;
+    height: 90vh;
 }
 
 .barcode-table {
@@ -8,31 +10,45 @@
 
 .barcodeInputContainer {
     display: flex;
+    align-items: center;
     width: 100%;
     justify-content: space-between;
 }
 
 .buttonSearch {
+    cursor: pointer;
+    background-color: var(--gris-claro);
     padding: .3rem;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid var(--gris-intermedio);
+    transition: all .1s ease-in-out;
+}
+
+.buttonSearch:hover {
+    border: 1px solid var(--gris);
+    box-shadow: 0px 0px 5px 0px rgba(112, 121, 140, 0.5);
 }
 
 .inputBarcode {
-    margin: 0 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--gris);
+    padding: .2rem;
+    margin: 0 .8rem;
     flex: 1;
 }
 
 .tableContainer {
-    margin-top: 4rem;
-    background-color: #ADB5BD;
-    height: 45rem;
-    max-height: 45rem;
+    margin-top: 2rem;
+    height: 90%;
     overflow-y: auto;
-    padding: 0 .5rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(112, 121, 140, 1);
+    padding: .5rem;
 }
 
 .tableProducts {
     width: 100%;
-    border: 1px solid grey;
     border-collapse: collapse;
 
     p {
@@ -42,42 +58,56 @@
     td,
     th {
         padding: .5rem;
-        border: 1px solid grey;
-        background-color: #f2f2f2
+        border-bottom: 1px solid var(--gris-intermedio);
+        font-weight: 450;
+        text-align: start;
     }
 
     thead {
-        background-color: #f2f2f2;
+        color: var(--gris);
     }
 }
 
 .totalpriceContainer {
     width: 35%;
-    margin-left: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .totalPrice {
+
     width: 100%;
-    margin-bottom: 5rem;
+
+    h1 {
+        font-weight: 600;
+    }
 
     .priceContainer {
-        background-color: greenyellow;
-        padding: 2rem;
-        margin: 1rem 0;
+        box-shadow: 0px 0px 5px 0px rgba(112, 121, 140, 1);
+        border-radius: 5px;
+        background-color: var(--gris-claro);
+        padding: 1.5rem;
+        margin-top: 1rem;
 
         h2 {
             font-size: 2rem;
+            font-weight: 400;
         }
     }
+}
+
+.addPriceContainer {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(112, 121, 140, 1);
 }
 
 .formInputAddPrice {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0;
+    margin-top: 1rem;
 
     span {
         font-weight: bold;
@@ -85,27 +115,56 @@
     }
 
     button {
-        width: 40%;
+        width: 100%;
         margin-top: 1rem;
     }
 }
 
 .inputAddPriceContainer {
     display: flex;
+    align-items: center;
 }
 
 .buttonFinishBuy {
+    cursor: pointer;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
     padding: 1.5rem;
     font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 20px;
+    background-color: var(--gris-claro);
+    border: none;
+    border-radius: 5px;
+    border: 1px solid var(--gris-intermedio);
+    transition: all .1s ease-in-out;
+}
+
+.buttonFinishBuy:hover {
+    border: 1px solid var(--gris);
+    box-shadow: 0px 0px 5px 0px rgba(112, 121, 140, 0.5);
 }
 
 .buttonAdd {
+    cursor: pointer;
+    background-color: var(--gris-claro);
+    border: none;
+    border-radius: 5px;
+    border: 1px solid var(--gris-intermedio);
+    transition: all .1s ease-in-out;
     padding: .5rem;
 }
 
+.buttonAdd:hover {
+    border: 1px solid var(--gris);
+    box-shadow: 0px 0px 5px 0px rgba(112, 121, 140, 0.5);
+}
+
 .inputAddPrice {
+    border-radius: 5px;
+    border: 1px solid var(--gris);
     padding: .2rem 0;
 }
 
@@ -158,6 +217,7 @@
     }
 
     .buttonFinishBuy {
+        margin: 2rem 0;
         padding: 1rem;
     }
 }

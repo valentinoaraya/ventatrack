@@ -16,21 +16,57 @@
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 90%;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-.divLabelInput {
-    margin: 1rem 0;
-
-    input {
-        padding: .3rem .3rem;
-        margin-left: 1rem;
+    h2 {
+        margin-bottom: 1rem;
     }
 }
 
-.buttonModalForm {
-    padding: .5rem;
-    margin-right: 1rem;
+.formAddProduct {
+    width: 100%;
 }
+
+.divLabelInput {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+
+    input {
+        margin: .5rem 0;
+        border-radius: 5px;
+        border: 1px solid var(--gris);
+        padding: .3rem;
+    }
+}
+
+.divButtonsModalForm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.buttonModalForm {
+    width: 100%;
+    padding: .5rem;
+    cursor: pointer;
+    background-color: var(--gris-claro);
+    border: none;
+    border-radius: 5px;
+    border: 1px solid var(--gris-intermedio);
+    transition: all .1s ease-in-out;
+}
+
+.buttonModalForm:hover {
+    border: 1px solid var(--gris);
+    box-shadow: 0px 0px 5px 0px rgba(112, 121, 140, 0.5);
+}
+
 
 @media screen and (max-width: 480px) {
     .modal-content {
