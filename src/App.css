@@ -41,7 +41,7 @@
   margin: 1rem 0;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1200px) {
   .app {
     flex-direction: column;
   }

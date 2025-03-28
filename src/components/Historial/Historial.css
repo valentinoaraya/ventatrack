@@ -3,16 +3,19 @@
 }
 
 .divHistorySalesContainer {
-    width: 100%;
+    margin: 1.5rem 0;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .divSaleContainer {
-    margin: 1rem 0;
     padding: 1rem;
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(112, 121, 140, 0.5);
 
     h2 {
+        font-size: 1.2rem;
         font-weight: 400;
         margin-bottom: .5rem;
     }
@@ -27,13 +30,24 @@
 
     span {
         margin-left: .2rem;
-        font-weight: bold;
+        font-weight: 500;
     }
 }
 
 .buttonFilter {
-    margin-right: 1rem;
+    cursor: pointer;
+    background-color: var(--gris-claro);
     padding: .5rem;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid var(--gris-intermedio);
+    transition: all .1s ease-in-out;
+    margin-right: 1rem;
+}
+
+.buttonFilter:hover {
+    border: 1px solid var(--gris);
+    box-shadow: 0px 0px 5px 0px rgba(112, 121, 140, 0.5);
 }
 
 .divButtonPages {
@@ -49,6 +63,13 @@
 
 
 @media screen and (max-width: 1200px) {
+
+    .divHistorySalesContainer {
+        margin: 1rem 0;
+        gap: 1.5rem;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
     .divHistorialContainer {
         height: 93vh;
     }

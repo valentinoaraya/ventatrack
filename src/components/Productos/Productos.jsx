@@ -4,6 +4,7 @@ import { deleteProduct, getAllProducts, updateProduct } from '../../services/fir
 import ModalNuevoProducto from '../ModalNuevoProducto/ModalNuevoProducto.jsx';
 import { ToastContainer } from 'react-toastify';
 import { notifySucces, notifyError } from '../../utils/notifications.js';
+import { PencilIcon } from '../../common/Icons.jsx';
 
 const Productos = () => {
 
@@ -113,48 +114,52 @@ const Productos = () => {
                                 placeholder='Nombre del producto...'
                             />
                         </div>
-                        <table className='tableProducts2'>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        PRODUCTO
-                                    </th>
-                                    <th>
-                                        PRECIO
-                                    </th>
-                                    <th>
-                                        CODIGO DE BARRAS
-                                    </th>
-                                    <th>
-                                        EDITAR
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    paginatedProducts?.map(producto => {
-                                        return <tr key={producto.codigoDeBarras}>
-                                            <td className='tdTable'>
-                                                {producto.nombre}
-                                            </td>
-                                            <td className='tdTable'>
-                                                $ {producto.precio}
-                                            </td>
-                                            <td className='tdTable'>
-                                                {producto.codigoDeBarras}
-                                            </td>
-                                            <td className='tdTable'>
-                                                <button onClick={() => handleOpenModalForm(producto)}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-fill" viewBox="0 0 16 16">
-                                                        <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z" />
-                                                    </svg>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    })
-                                }
-                            </tbody>
-                        </table>
+                        <div className='tableProductsContainer'>
+                            <table className='tableProducts2'>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            PRODUCTO
+                                        </th>
+                                        <th>
+                                            PRECIO
+                                        </th>
+                                        <th>
+                                            CODIGO DE BARRAS
+                                        </th>
+                                        <th className='thEditProduct'>
+                                            EDITAR
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        paginatedProducts?.map(producto => {
+                                            return <tr key={producto.codigoDeBarras}>
+                                                <td className='tdTable'>
+                                                    {producto.nombre}
+                                                </td>
+                                                <td className='tdTable'>
+                                                    $ {producto.precio}
+                                                </td>
+                                                <td className='tdTable'>
+                                                    {producto.codigoDeBarras}
+                                                </td>
+                                                <td className='tdTable tdEditProduct'>
+                                                    <button className='buttonEditProduct' onClick={() => handleOpenModalForm(producto)}>
+                                                        <PencilIcon
+                                                            width={'16px'}
+                                                            height={'16px'}
+                                                            fill={'#252323'}
+                                                        />
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        })
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </>
             }
             <div className='divButtonPages'>

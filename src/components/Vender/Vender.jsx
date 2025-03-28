@@ -5,6 +5,7 @@ import ModalNuevoProducto from '../ModalNuevoProducto/ModalNuevoProducto.jsx';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import { notifyError, notifySucces } from '../../utils/notifications.js';
+import { CheckIcon, TrashIcon } from '../../common/Icons.jsx';
 
 const Vender = () => {
 
@@ -115,101 +116,123 @@ const Vender = () => {
     }
 
     return (
-        <div className='mainDivVender'>
+        <>
             <ToastContainer />
-            <div className='barcode-table'>
-                <div className='barcodeInputContainer'>
-                    <h1 className='title'>Código de barras:</h1>
-                    <input
-                        className='inputBarcode'
-                        type="number"
-                        name="barcode"
-                        value={codeBar || ""}
-                        onChange={(e) => {
-                            setCodeBar(parseFloat(e.target.value))
-                        }}
-                        onKeyDown={(e) => e.key === "Enter" && handleBuscarProducto(e)}
-                    />
-                    <button className='buttonSearch' onClick={handleBuscarProducto} >Buscar</button>
+            <div className='mainDivVender'>
+                <div className='barcode-table'>
+                    <div className='barcodeInputContainer'>
+                        <h2 className='title'>Código de barras:</h2>
+                        <input
+                            placeholder='Escanea el código de barras...'
+                            className='inputBarcode'
+                            name="barcode"
+                            value={codeBar || ""}
+                            onChange={(e) => {
+                                setCodeBar(parseFloat(e.target.value))
+                            }}
+                            onKeyDown={(e) => e.key === "Enter" && handleBuscarProducto(e)}
+                        />
+                        <button className='buttonSearch' onClick={handleBuscarProducto} >Buscar</button>
+                    </div>
+                    <div className='tableContainer'>
+                        <table className='tableProducts'>
+                            <thead>
+                                <tr>
+                                    <th>DETALLE</th>
+                                    <th>CANTIDAD</th>
+                                    <th>PRECIO x UNIDAD</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    productsFound.map((producto, index) => {
+                                        return <tr key={index}>
+                                            <td>
+                                                <p>{producto.nombre || "Producto"}</p>
+                                            </td>
+                                            <td>
+                                                {producto.cantidad}
+                                            </td>
+                                            <td>
+                                                $ {producto.precio}
+                                            </td>
+                                            <td onClick={() => handleDeleteProduct(producto)} className='deleteProductChar'>
+                                                <TrashIcon
+                                                    width={"20px"}
+                                                    height={"20px"}
+                                                    fill={"#252323"}
+                                                />
+                                            </td>
+                                        </tr>
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div className='tableContainer'>
-                    <table className='tableProducts'>
-                        <thead>
-                            <tr>
-                                <th>DETALLE</th>
-                                <th>CANTIDAD</th>
-                                <th>PRECIO x UNIDAD</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                productsFound.map((producto, index) => {
-                                    return <tr key={index}>
-                                        <td>
-                                            <p>{producto.nombre || "Producto"}</p>
-                                        </td>
-                                        <td>
-                                            {producto.cantidad}
-                                        </td>
-                                        <td>
-                                            $ {producto.precio}
-                                        </td>
-                                        <td onClick={() => handleDeleteProduct(producto)} className='deleteProductChar'>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
-                                            </svg>
-                                        </td>
-                                    </tr>
-                                })
-                            }
-                        </tbody>
-                    </table>
-                </div>
-                <div className='divWithShadow'></div>
-            </div>
-            <div className='totalpriceContainer'>
-                <div>
-                    <div className='totalPrice'>
-                        <h1>TOTAL:</h1>
-                        <div className='priceContainer'>
-                            <h2>$ {total}</h2>
+                <div className='totalpriceContainer'>
+                    <div>
+                        <div className='totalPrice'>
+                            <h1>TOTAL:</h1>
+                            <div className='priceContainer'>
+                                <h2>$ {total}</h2>
+                            </div>
+                        </div>
+                        <div className='addPriceContainer'>
+                            <p>Precio de producto sin código:</p>
+                            <form className='formInputAddPrice' onSubmit={handleSubmit}>
+                                <div className='inputAddPriceContainer'>
+                                    <p><span>$</span></p>
+                                    <input
+                                        className='inputAddPrice'
+                                        name='addPrice'
+                                        value={addPrice || ""}
+                                        onChange={(e) => setAddPrice(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                                <button type='submit' className='buttonAdd'>Agregar</button>
+                            </form>
+                        </div>
+                        <div className='addPriceContainer'>
+                            <p>Egreso de dinero:</p>
+                            <form className='formInputAddPrice' onSubmit={handleSubmit}>
+                                <div className='inputAddPriceContainer'>
+                                    <p><span>$</span></p>
+                                    <input
+                                        className='inputAddPrice'
+                                        name='addPrice'
+                                        required
+                                    />
+                                </div>
+                                <button type='submit' className='buttonAdd'>Restar de la caja</button>
+                            </form>
                         </div>
                     </div>
-                    <div className='addPriceContainer'>
-                        <p>Ingresar precio de producto suelto:</p>
-                        <form className='formInputAddPrice' onSubmit={handleSubmit}>
-                            <div className='inputAddPriceContainer'>
-                                <p><span>$</span></p>
-                                <input
-                                    className='inputAddPrice'
-                                    type="number"
-                                    name='addPrice'
-                                    value={addPrice || ""}
-                                    onChange={(e) => setAddPrice(e.target.value)}
-                                    required
-                                />
-                            </div>
-                            <button type='submit' className='buttonAdd'>Agregar</button>
-                        </form>
-                    </div>
+                    <button
+                        className='buttonFinishBuy'
+                        onClick={handleCompleteSale}
+                        disabled={disabledButton}
+                    >
+                        <CheckIcon
+                            width={"25px"}
+                            height={"25px"}
+                            fill={"#252323"}
+                        />
+                        Realizar venta
+                    </button>
                 </div>
-                <button
-                    className='buttonFinishBuy'
-                    onClick={handleCompleteSale}
-                    disabled={disabledButton}
-                >
-                    Realizar venta
-                </button>
+                <ModalNuevoProducto
+                    disabledButton={disabledButton}
+                    isOpen={isModalOpen}
+                    onClose={handleCloseModal}
+                    dataProduct={{ codigoDeBarras: newProductCode }}
+                    onSubmit={(productData) => handleAddProduct(productData)}
+                />
             </div>
-            <ModalNuevoProducto
-                disabledButton={disabledButton}
-                isOpen={isModalOpen}
-                onClose={handleCloseModal}
-                dataProduct={{ codigoDeBarras: newProductCode }}
-                onSubmit={(productData) => handleAddProduct(productData)}
-            />
-        </div>
+        </>
+
     );
 }
 

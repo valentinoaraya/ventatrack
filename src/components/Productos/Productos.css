@@ -1,24 +1,63 @@
+.tableProductsContainer {
+    margin: 2rem 0;
+    border-radius: 5px;
+    padding: .5rem;
+}
+
 .tableProducts2 {
 
     width: 100%;
-    border: 1px solid grey;
     border-collapse: collapse;
-    margin: 2rem 0;
+
+    p {
+        margin: .2rem 0;
+    }
 
     td,
     th {
         padding: .5rem;
-        border: 1px solid grey;
+        border-bottom: 1px solid var(--gris-intermedio);
+        font-weight: 450;
+        text-align: start;
     }
 
     thead {
-        background-color: #adb5bd;
+        color: var(--gris);
     }
 }
 
-.tdTable {
+th.thEditProduct,
+td.tdEditProduct {
     text-align: center;
 }
+
+.buttonPage {
+    cursor: pointer;
+    background-color: var(--gris-claro);
+    padding: .3rem;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid var(--gris-intermedio);
+    transition: all .1s ease-in-out;
+}
+
+.buttonPage:hover {
+    border: 1px solid var(--gris);
+    box-shadow: 0px 0px 5px 0px rgba(112, 121, 140, 0.5);
+}
+
+.buttonEditProduct {
+    border-radius: 5px;
+    padding: .2rem;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+}
+
+.buttonEditProduct:hover {
+    box-shadow: 0px 0px 5px 0px rgba(112, 121, 140, 0.5);
+}
+
 
 .divInput {
     display: flex;
@@ -30,6 +69,8 @@
     }
 
     input {
+        border-radius: 5px;
+        border: 1px solid var(--gris);
         padding: .3rem;
         width: 30%;
     }

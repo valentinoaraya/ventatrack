@@ -98,32 +98,34 @@ const ModalNuevoProducto = ({ isOpen, onClose, onSubmit, dataProduct, disabledBu
                             required
                         />
                     </div>
-                    <button
-                        className='buttonModalForm'
-                        type='submit'
-                        disabled={disabledButton}
-                    >
-                        {update ? "Actualizar" : "Agregar"} producto
-                    </button>
-                    {
-                        onDelete &&
+                    <div className='divButtonsModalForm'>
+                        <button
+                            className='buttonModalForm'
+                            type='submit'
+                            disabled={disabledButton}
+                        >
+                            {update ? "Actualizar" : "Agregar"}
+                        </button>
+                        {
+                            onDelete &&
+                            <button
+                                className='buttonModalForm'
+                                type='button'
+                                onClick={handleDeleteProduct}
+                                disabled={disabledButton}
+                            >
+                                Eliminar
+                            </button>
+                        }
                         <button
                             className='buttonModalForm'
                             type='button'
-                            onClick={handleDeleteProduct}
+                            onClick={handleCancel}
                             disabled={disabledButton}
                         >
-                            Eliminar producto
+                            Cancelar
                         </button>
-                    }
-                    <button
-                        className='buttonModalForm'
-                        type='button'
-                        onClick={handleCancel}
-                        disabled={disabledButton}
-                    >
-                        Cancelar
-                    </button>
+                    </div>
                 </form>
             </div>
         </div>
