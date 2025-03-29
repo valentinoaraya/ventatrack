@@ -16,6 +16,7 @@ const Vender = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [newProductCode, setNewProductCode] = useState(null)
     const [disabledButton, setDisabledButton] = useState(false)
+    const [amountToSubstract, setAmountToSubstract] = useState(0)
 
     useEffect(() => {
         const nuevoTotal = productsFound.reduce((acc, producto) => {
@@ -115,6 +116,27 @@ const Vender = () => {
         setDisabledButton(false)
     }
 
+    const handleSubstractMoney = async (e) => {
+        e.preventDefault()
+        setDisabledButton(true)
+        if (!amountToSubstract) return
+        const date = new Date()
+
+        const moneyOutfollowData = {
+            fecha: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
+            egreso: true,
+            total: -amountToSubstract,
+        }
+        const response = await addSaleToDB(moneyOutfollowData)
+        if (response) {
+            notifySucces(response)
+            setAmountToSubstract(0)
+        } else {
+            notifyError("Error al realizar la operación.")
+        }
+        setDisabledButton(false)
+    }
+
     return (
         <>
             <ToastContainer />
@@ -197,12 +219,14 @@ const Vender = () => {
                         </div>
                         <div className='addPriceContainer'>
                             <p>Egreso de dinero:</p>
-                            <form className='formInputAddPrice' onSubmit={handleSubmit}>
+                            <form className='formInputAddPrice' onSubmit={handleSubstractMoney}>
                                 <div className='inputAddPriceContainer'>
                                     <p><span>$</span></p>
                                     <input
                                         className='inputAddPrice'
-                                        name='addPrice'
+                                        name='amountToSubstract'
+                                        value={amountToSubstract || ''}
+                                        onChange={(e) => setAmountToSubstract(e.target.value)}
                                         required
                                     />
                                 </div>

@@ -92,10 +92,15 @@ const Historial = () => {
                         <div className='divHistorySalesContainer'>
                             {
                                 paginatedSales.map(fecha => {
+
+                                    const ventas = objetoVentas[fecha].filter(ventas => !ventas.egreso)
+                                    const egresos = objetoVentas[fecha].filter(ventas => ventas.egreso)
+
                                     return <div key={fecha} className='divSaleContainer'>
                                         <h2>Fecha: <span>{fecha.split("-")[2]} / {fecha.split("-")[1]} / {fecha.split("-")[0]}</span></h2>
                                         <ul>
-                                            <li>Cantidad de ventas: {objetoVentas[fecha].length}</li>
+                                            <li>Cantidad de ventas: {ventas.length}</li>
+                                            <li>Pagos realizados: {egresos.length}</li>
                                             <li>Total del día: <span>$ {objetoVentas[fecha].reduce((acc, venta) => {
                                                 return acc + venta.total
                                             }, 0)}</span></li>

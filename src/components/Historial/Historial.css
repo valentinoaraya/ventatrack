@@ -64,9 +64,13 @@
 
 @media screen and (max-width: 1200px) {
 
+    .divSaleContainer {
+        padding: .5rem;
+    }
+
     .divHistorySalesContainer {
         margin: 1rem 0;
-        gap: 1.5rem;
+        gap: 1rem;
         grid-template-columns: repeat(1, 1fr);
     }
 
